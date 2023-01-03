@@ -98,7 +98,7 @@ pub fn rq_to_sql(
 
 /// Generate PRQL code from PL AST
 pub fn pl_to_prql(pl: Vec<ast::pl::Stmt>) -> Result<String, ErrorMessages> {
-    Ok(format!("{}", ast::pl::Statements(pl)))
+    Ok(codegen::write(&pl))
 }
 
 /// JSON serialization and deserialization functions
