@@ -115,17 +115,9 @@ impl Display for StmtKind {
             StmtKind::FuncDef(func_def) => {
                 writeln!(f, "{func_def}\n")?;
             }
-            StmtKind::VarDef(var) => {
-                let pipeline = &var.value;
-                match &pipeline.kind {
-                    ExprKind::FuncCall(_) => {
-                        write!(f, "let {} = (\n  {pipeline}\n)\n\n", var.name)?;
-                    }
-
-                    _ => {
-                        write!(f, "let {} = {pipeline}\n\n", var.name)?;
-                    }
-                };
+            StmtKind::VarDef(def) => {
+                let pipeline = &def.value;
+                write!(f, "let {} = {pipeline}\n\n", def.name)?;
             }
         }
         Ok(())

@@ -42,6 +42,7 @@
 pub mod ast;
 #[cfg(all(feature = "cli", not(target_family = "wasm")))]
 mod cli;
+mod codegen;
 mod error;
 mod parser;
 pub mod semantic;
